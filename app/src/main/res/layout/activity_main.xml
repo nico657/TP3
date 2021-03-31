@@ -9,6 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/red"
         android:theme="@style/Theme.TP3.AppBarOverlay">
 
         <TextView
@@ -18,6 +19,7 @@
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
+            android:textColor="@color/white"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
@@ -25,8 +27,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            app:tabIndicatorColor="@color/white"
+            android:background="@color/red"
+            app:tabIndicatorColor="@color/dark_red"
             app:tabTextColor="@color/white"/>
     </com.google.android.material.appbar.AppBarLayout>
 
