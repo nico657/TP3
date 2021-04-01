@@ -1,6 +1,7 @@
 package ca.ulaval.ima.tp3
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -14,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,10 +29,7 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-        val recyclerViewList = findViewById<RecyclerView>(R.id.simple_list_recycler_view)
-        val values = arrayOf("GELGIF", "IFT", "GLO", "GMC", "GCI", "STT", "GMT", "PHI")
-        recyclerViewList.layoutManager = LinearLayoutManager(this)
-        recyclerViewList.adapter = simple_list_recycler_view_adapater(values)
+
 
 
 
