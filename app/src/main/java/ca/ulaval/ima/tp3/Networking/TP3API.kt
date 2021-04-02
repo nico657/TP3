@@ -4,16 +4,22 @@ import android.security.identity.AccessControlProfileId
 import ca.ulaval.ima.tp3.BuildConfig
 import ca.ulaval.ima.tp3.model.Brand
 import ca.ulaval.ima.tp3.model.BrandList
+import ca.ulaval.ima.tp3.model.Model
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface TP3API {
     companion object{
-        const val BASE_URL:String = "tp3.infomobile.app/api/v1/"
+        const val API_V1 = "/api/v1/"
+        const val BASE_URL:String = "https://tp3.infomobile.app"
     }
-    @GET(BASE_URL+ "brand/")
-    fun listBrand(): Call<ContentResponse<BrandList<Brand>>>
+    @GET(API_V1 + "brand/")
+    fun listBrand(): Call<ContentResponse<List<Brand>>>
+
+    @GET (API_V1 + "model/{id}/models/")
+    fun listModel(@Path("id") brand_id:Int?): Call<ContentResponse<List<Model>>>
 
     data class ContentResponse<T> (
         @SerializedName("content") val content : T,

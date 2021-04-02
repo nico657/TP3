@@ -8,7 +8,7 @@ object NetworkCenter {
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("tp3.infomobile.app/api/v1")
+        .baseUrl(TP3API.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
