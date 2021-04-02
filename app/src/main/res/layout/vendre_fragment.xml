@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:entries="@array/menuTransmission"
                 app:layout_constraintTop_toBottomOf="@+id/textView_transmission" />
 
             <TextView
@@ -141,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:entries="@array/menuAnne"
                 app:layout_constraintTop_toBottomOf="@+id/textView_annee" />
 
             <TextView

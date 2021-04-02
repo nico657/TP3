@@ -56,7 +56,7 @@ class Offres_Fragment : Fragment() {
                         recyclerViewList.layoutManager = LinearLayoutManager(root.context)
                         recyclerViewList.adapter = BrandNameRecyclerViewAdapter(it){
                             Log.d("demo","An element was seleted: $it")
-                            val newActivity2 = Intent(root.context, ModelActivity::class.java)
+                            val newActivity2 = Intent((activity as MainActivity), ModelActivity::class.java)
                             newActivity2.putExtra("brand_id",it)
                             startActivity(newActivity2)
 

@@ -1,13 +1,9 @@
 package ca.ulaval.ima.tp3
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,22 +14,21 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModelActivity : AppCompatActivity() {
+class SelectionModeleActivity :AppCompatActivity(){
+
     val tp3NetworkCenter = NetworkCenter.buildService(TP3API::class.java)
     lateinit var recyclerViewList: RecyclerView
- //   var brandId:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_model)
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
-        val brandId = intent.extras?.getString("brand_id")?.toInt()
-        Log.d("testModeleActivity",brandId.toString())
 
         recyclerViewList = findViewById<RecyclerView>(R.id.simpleListRecyclerView)
         recyclerViewList.layoutManager = LinearLayoutManager(this)
-        getListModel(brandId)
+        selectModel( )
     }
 
 //    override fun onResume() {
@@ -52,8 +47,8 @@ class ModelActivity : AppCompatActivity() {
     }
 
 
-    fun getListModel(brandId:Int?){
-        tp3NetworkCenter.listModel(brandId).enqueue(object :
+    fun selectModel(){
+        tp3NetworkCenter.listBrandModel().enqueue(object :
                 Callback<TP3API.ContentResponse<List<Model>>> {
             override fun onResponse(
                     call: Call<TP3API.ContentResponse<List<Model>>>,
@@ -62,14 +57,15 @@ class ModelActivity : AppCompatActivity() {
                 response.body()?.content?.let {
                     for (model in it) {
                         Log.d(
-                                "ima-demo_ListModel",
+                                "ima-demo",
                                 " ${model.name} with id ${model.id}"
                         )
+
                     }
                     val adapter = ModelNameRecyclerViewAdapter(it)
                     recyclerViewList.adapter = adapter
                     adapter.setOnModelClickListener {
-                        Toast.makeText(baseContext, "test", Toast.LENGTH_SHORT).show()
+
                     }
                     Log.d("demo", "An element was seleted: $it")
 
@@ -85,5 +81,6 @@ class ModelActivity : AppCompatActivity() {
         }
         )
     }
+
 
 }

@@ -29,6 +29,7 @@ class ShortDetailRecyclerViewAdapter (private val items_List:List<LightOutput>, 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val car: LightOutput = items_List[position]
+        //holder.photo.setImageResource(car.image)
         holder.titre.text = car.model.brand.name + " " +car.model.id
         holder.annee.text = car.year.toString()
         holder.kilo.text = car.kilometers.toString()

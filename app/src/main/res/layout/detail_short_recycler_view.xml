@@ -7,85 +7,98 @@
     android:layout_height="wrap_content">
 
 
-    <ImageView
-        android:id="@+id/imageView_model"
-        android:layout_width="153dp"
-        android:layout_height="153dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat ="@drawable/ic_twotone_directions_car_24" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/detailShortRecyclerView"
+        >
 
-    <TextView
-        android:id="@+id/textView_brandmodel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/imageView_model"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-        />
+        <ImageView
+            android:id="@+id/imageView_model"
+            android:layout_width="153dp"
+            android:layout_height="153dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat ="@drawable/ic_twotone_directions_car_24" />
 
-    <TextView
-        android:id="@+id/textView_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Année:"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_brandmodel"
-        app:layout_constraintTop_toBottomOf="@+id/textView_brandmodel" />
+        <TextView
+            android:id="@+id/textView_brandmodel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/imageView_model"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            />
 
-    <TextView
-        android:id="@+id/textView_miles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kilométrage: "
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@id/textView_year"
-        app:layout_constraintTop_toBottomOf="@+id/textView_year" />
+        <TextView
+            android:id="@+id/textView_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Année:"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_brandmodel"
+            app:layout_constraintTop_toBottomOf="@+id/textView_brandmodel" />
 
-    <TextView
-        android:id="@+id/textView_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prix : "
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@+id/textView_miles"
-        app:layout_constraintTop_toBottomOf="@+id/textView_miles" />
+        <TextView
+            android:id="@+id/textView_miles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kilométrage: "
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="@id/textView_year"
+            app:layout_constraintTop_toBottomOf="@+id/textView_year" />
 
-    <TextView
-        android:id="@+id/textView_year_ans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_year" />
+        <TextView
+            android:id="@+id/textView_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prix : "
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="@+id/textView_miles"
+            app:layout_constraintTop_toBottomOf="@+id/textView_miles" />
 
-    <TextView
-        android:id="@+id/textView_miles_ans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_year_ans" />
+        <TextView
+            android:id="@+id/textView_year_ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_year" />
 
-    <TextView
-        android:id="@+id/textView_price_ans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_miles_ans" />
+        <TextView
+            android:id="@+id/textView_miles_ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_year_ans" />
+
+        <TextView
+            android:id="@+id/textView_price_ans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_miles_ans" />
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

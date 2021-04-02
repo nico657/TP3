@@ -3,15 +3,20 @@ package ca.ulaval.ima.tp3
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ca.ulaval.ima.tp3.model.Model
 
-class ModelNameRecyclerViewAdapter (private val items_List:List<Model>, private val listener:((String)-> Unit)) :
+class ModelNameRecyclerViewAdapter (private val items_List:List<Model>) :
     RecyclerView.Adapter<ModelNameRecyclerViewAdapter.ViewHolder>() {
 
-           inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val itemCars: TextView = itemView.findViewById(R.id.textView_list)
+    lateinit var onItemClickListener: ((Int?)->Unit)
+    inner class ViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val itemCars: TextView = itemView.findViewById(R.id.textView_list)
+    }
+        fun setOnModelClickListener(onItemClickListener: ((Int?)->Unit)){
+            this.onItemClickListener = onItemClickListener
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,8 +29,11 @@ class ModelNameRecyclerViewAdapter (private val items_List:List<Model>, private 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val car: Model = items_List[position]
             holder.itemCars.text = car.name
-            holder.itemView.setOnClickListener { listener(car.name) }
+            holder.itemView.setOnClickListener {
+                onItemClickListener(car.id)
+            }
         }
+
 
         override fun getItemCount(): Int {
             return items_List.count()

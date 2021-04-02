@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MesAnnonces_Fragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<!--    <include layout="@layout/detail_short_recycler_view"></include>-->
 
 </FrameLayout>

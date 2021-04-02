@@ -18,8 +18,11 @@ interface TP3API {
     @GET(API_V1 + "brand/")
     fun listBrand(): Call<ContentResponse<List<Brand>>>
 
-    @GET (API_V1 + "model/{id}/models/")
+    @GET (API_V1 + "brand/{id}/models/")
     fun listModel(@Path("id") brand_id:Int?): Call<ContentResponse<List<Model>>>
+
+    @GET (API_V1 + "model/")
+    fun listBrandModel(): Call<ContentResponse<List<Model>>>
 
     data class ContentResponse<T> (
         @SerializedName("content") val content : T,

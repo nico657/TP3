@@ -20,7 +20,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_offre" />
+<!--    <include layout="@layout/content_offre" />-->
+    <include layout="@layout/simple_list_recycler_view"/>
 
 
 
