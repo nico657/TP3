@@ -11,11 +11,11 @@ import ca.ulaval.ima.tp3.model.Model
 class ModelNameRecyclerViewAdapter (private val items_List:List<Model>) :
     RecyclerView.Adapter<ModelNameRecyclerViewAdapter.ViewHolder>() {
 
-    lateinit var onItemClickListener: ((Int?)->Unit)
-    inner class ViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    lateinit var onItemClickListener: ((IntArray)->Unit)
+    inner class ViewHolder( itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemCars: TextView = itemView.findViewById(R.id.textView_list)
     }
-        fun setOnModelClickListener(onItemClickListener: ((Int?)->Unit)){
+        fun setOnModelClickListener(onItemClickListener: ((IntArray)->Unit)){
             this.onItemClickListener = onItemClickListener
         }
 
@@ -29,8 +29,9 @@ class ModelNameRecyclerViewAdapter (private val items_List:List<Model>) :
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val car: Model = items_List[position]
             holder.itemCars.text = car.name
-            holder.itemView.setOnClickListener {
-                onItemClickListener(car.id)
+            holder.itemCars.setOnClickListener {
+                val searchID:IntArray = intArrayOf(car.id, car.brand.id)
+                onItemClickListener(searchID)
             }
         }
 

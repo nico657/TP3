@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.ulaval.ima.tp3.model.LightOutput
 import ca.ulaval.ima.tp3.model.Model
 
-class ShortDetailRecyclerViewAdapter (private val items_List:List<LightOutput>, private val listener:((String)-> Unit)) :
+class ShortDetailRecyclerViewAdapter (private val items_List:LightOutput) :
         RecyclerView.Adapter<ShortDetailRecyclerViewAdapter.ViewHolder>() {
 
+    lateinit var onItemClickListener: ((Int?)->Unit)
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val photo: ImageView = itemView.findViewById(R.id.imageView_model)
         val titre: TextView  = itemView.findViewById(R.id.textView_brandmodel)
@@ -28,17 +29,22 @@ class ShortDetailRecyclerViewAdapter (private val items_List:List<LightOutput>, 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val car: LightOutput = items_List[position]
+        val car: LightOutput = items_List
         //holder.photo.setImageResource(car.image)
         holder.titre.text = car.model.brand.name + " " +car.model.id
         holder.annee.text = car.year.toString()
         holder.kilo.text = car.kilometers.toString()
         holder.prix.text = car.price.toString()
 
-        holder.itemView.setOnClickListener { listener(car.model.id.toString()) }
+        holder.itemView.setOnClickListener { car.created}
     }
 
     override fun getItemCount(): Int {
-        return items_List.count()
+        return 1
+
+    }
+
+    fun setOnModelClickListener(onItemClickListener: ((Int?)->Unit)){
+        this.onItemClickListener = onItemClickListener
     }
 }

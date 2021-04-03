@@ -28,7 +28,7 @@ class Vendre_Fragment : Fragment() {
         val choixModele : TextView = root.findViewById(R.id.textView_selecModel)
 
         choixModele.setOnClickListener(){
-            Toast.makeText(context, "CLIC", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(activity as MainActivity, SelectionModeleActivity::class.java))
         }
 
         button_soumission.setOnClickListener(){

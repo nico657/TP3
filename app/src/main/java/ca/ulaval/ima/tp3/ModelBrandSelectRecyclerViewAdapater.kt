@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.ulaval.ima.tp3.model.Brand
 import ca.ulaval.ima.tp3.model.Model
 
-class ModelBrandSelectRecyclerViewAdapater(private val items_List:List<Model>, private val listener:((String)-> Unit)) :RecyclerView.Adapter<ModelBrandSelectRecyclerViewAdapater.ViewHolder>() {
+class ModelBrandSelectRecyclerViewAdapater(private val items_List:List<Model>) :RecyclerView.Adapter<ModelBrandSelectRecyclerViewAdapater.ViewHolder>() {
 
-
+    lateinit var onItemClickListener: ((String)->Unit)
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemCars: TextView = itemView.findViewById(R.id.textView_list)
     }
@@ -25,8 +25,8 @@ class ModelBrandSelectRecyclerViewAdapater(private val items_List:List<Model>, p
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val car:Model = items_List[position]
         holder.itemCars.text = car.brand.name +" "+ car.name
-        holder.itemView.setOnClickListener {
-            listener(car.brand.name +" "+ car.name)
+        holder.itemCars.setOnClickListener {
+            "${car.brand.id} ${car.id}"
         }
     }
 
@@ -34,5 +34,8 @@ class ModelBrandSelectRecyclerViewAdapater(private val items_List:List<Model>, p
         return items_List.count()
     }
 
+    fun setOnModelClickListener(onItemClickListener: ((String)->Unit)){
+        this.onItemClickListener = onItemClickListener
+    }
 
 }

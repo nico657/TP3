@@ -72,7 +72,7 @@ THE END 5x!</string>
     <string name="hello_fragment_2">Hello fragment 2</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_offre">TP3</string>
+    <string name="title_activity_offre">Modèle de voiture</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

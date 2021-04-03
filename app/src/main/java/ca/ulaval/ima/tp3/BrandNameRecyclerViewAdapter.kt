@@ -25,7 +25,7 @@ class BrandNameRecyclerViewAdapter(private val items_List:List<Brand>, private v
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val car:Brand = items_List[position]
             holder.itemCars.text = car.name
-            holder.itemView.setOnClickListener {
+            holder.itemCars.setOnClickListener {
                 listener(car.id.toString())
             }
     }

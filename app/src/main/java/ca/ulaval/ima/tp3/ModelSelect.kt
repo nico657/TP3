@@ -1,41 +1,41 @@
 package ca.ulaval.ima.tp3
 
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.ulaval.ima.tp3.Networking.NetworkCenter
 import ca.ulaval.ima.tp3.Networking.TP3API
+import ca.ulaval.ima.tp3.model.LightOutput
 import ca.ulaval.ima.tp3.model.Model
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SelectionModeleActivity :AppCompatActivity(){
+class ModelSelect : AppCompatActivity() {
 
     val tp3NetworkCenter = NetworkCenter.buildService(TP3API::class.java)
     lateinit var recyclerViewList: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_selection_modele)
-    //    setSupportActionBar(findViewById(R.id.toolbar))
+        setContentView(R.layout.activity_model_select)
+
+ //       setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
+        val searchID = intent.extras?.getIntArray("search_id")
+        Log.d("testModeleActivity",searchID.toString())
 
         recyclerViewList = findViewById<RecyclerView>(R.id.simpleListRecyclerView)
         recyclerViewList.layoutManager = LinearLayoutManager(this)
-        selectModelBrand( )
+        getOfferDetail(searchID?.get(0), searchID?.get(1))
+
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//
-//    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -46,26 +46,23 @@ class SelectionModeleActivity :AppCompatActivity(){
         }
     }
 
-
-    fun selectModelBrand(){
-        tp3NetworkCenter.listBrandModel().enqueue(object :
-                Callback<TP3API.ContentResponse<List<Model>>> {
+    fun getOfferDetail(modelId:Int?, brandId:Int?){
+        tp3NetworkCenter.offerDetail(modelId,brandId).enqueue(object :
+            Callback<TP3API.ContentResponse<LightOutput>> {
             override fun onResponse(
-                    call: Call<TP3API.ContentResponse<List<Model>>>,
-                    response: Response<TP3API.ContentResponse<List<Model>>>
+                call: Call<TP3API.ContentResponse<LightOutput>>,
+                response: Response<TP3API.ContentResponse<LightOutput>>
             ) {
                 response.body()?.content?.let {
-                    for (model in it) {
                         Log.d(
-                                "ima-demo",
-                                " ${model.name} with id ${model.id}"
+                            "ima-demo_lightOffer",
+                            "1-2-test"
                         )
-
-                    }
-                    val adapter = ModelBrandSelectRecyclerViewAdapater(it)
+                    val adapter = ShortDetailRecyclerViewAdapter(it)
                     recyclerViewList.adapter = adapter
                     adapter.setOnModelClickListener {
-
+                        Toast.makeText(baseContext, "testpage2", Toast.LENGTH_SHORT).show()
+                        //startActivity(Intent(baseContext, LightOutput::class.java))
                     }
                     Log.d("demo", "An element was seleted: $it")
 
@@ -73,14 +70,12 @@ class SelectionModeleActivity :AppCompatActivity(){
             }
 
             override fun onFailure(
-                    call: Call<TP3API.ContentResponse<List<Model>>>,
-                    t: Throwable
+                call: Call<TP3API.ContentResponse<LightOutput>>,
+                t: Throwable
             ) {
                 Log.d("ima-demo", "listModels Failure $t")
             }
         }
         )
     }
-
-
 }

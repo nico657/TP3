@@ -1,6 +1,7 @@
 package ca.ulaval.ima.tp3
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -36,10 +37,7 @@ class ModelActivity : AppCompatActivity() {
         getListModel(brandId)
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -69,7 +67,10 @@ class ModelActivity : AppCompatActivity() {
                     val adapter = ModelNameRecyclerViewAdapter(it)
                     recyclerViewList.adapter = adapter
                     adapter.setOnModelClickListener {
-                        Toast.makeText(baseContext, "test", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "testpage2", Toast.LENGTH_SHORT).show()
+                        val newActivity2 = Intent(baseContext, ModelSelect::class.java)
+                        newActivity2.putExtra("searchId",it)
+                        startActivity(newActivity2)
                     }
                     Log.d("demo", "An element was seleted: $it")
 
